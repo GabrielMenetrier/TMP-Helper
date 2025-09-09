@@ -8,4 +8,13 @@ def escolher_ativos(respostas):
     Por enquanto, retorna uma lista fixa de exemplo.
     """
     print(respostas)
-    return ['ITUB4.SA', 'VALE3.SA', 'WEGE3.SA']
+    ativos = [
+    "HASH11.SA",   # Bitcoin
+    "IVVB11.SA",
+    "GOLD11.SA",   # Ouro / Commodities
+    "BOVA11.SA",   # Índice Bovespa
+    "IMAB11.SA",   # Renda Fixa / Tesouro IPCA
+    "FIXA11.SA",   # Renda Fixa / CDI
+    ]
+    
+    return ativos
