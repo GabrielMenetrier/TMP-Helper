@@ -20,8 +20,13 @@
             </div>
             <div class="box">
                 <label>Qual o número máximo de ativos que você quer ter?</label>
+                <input type="number" name="n_ativos" min="5" max="20" required>
+            </div>
+            <div class="box">
+                <label>Qual o seu horizonhte de investimento em anos?</label>
                 <input type="number" name="max_ativos" min="1" max="20" required>
             </div>
+            <!--
             <div class="box">
                 <label>Qual seu horizonte de investimento?</label>
                 <select name="horizonte" required>
@@ -31,13 +36,16 @@
                     <option value="longo">Mais de 5 anos</option>
                 </select>
             </div>
+            -->
+
             <div class="box">
-                <label>Como sua visão sobre Bitcoin mais se parece?</label>
+                <label>Qual sua visão sobre Bitcoin?</label>
                 <select name="Bitcoin" required>
                     <option value="">Selecione</option>
-                    <option value="X%">É revolucionário e mudar o mundo</option>
-                    <option value="5%">É interessante, mas não acho que vá mudar o mundo</option>
-                    <option value="0%">Não acredito nessa patifaria</option>
+                    <option value="0.4">É a maior invenção da humanidade</option>
+                    <option value="0.15">É genial</option>
+                    <option value="0.5">É interessante, mas não acho que vá mudar o mundo</option>
+                    <option value="0">Isso ai é uma fraude</option>
                 </select>
             </div>
             <button type="submit" class="btn">Ver Portfólio</button>

@@ -34,5 +34,10 @@ def resultado():
     metricas = session.get('metricas', {})
     return render_template('resultado.html', ativos=ativos, proporcoes=proporcoes, metricas=metricas)
 
+@app.route('/detalhes')
+def detalhes():
+    # Renderiza a página com os gráficos da clusterização
+    return render_template('detalhes.html')
+
 if __name__ == '__main__':
-    app.run(debug=True) #
+    app.run(debug=True)
