@@ -1,20 +1,53 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Detalhes da Clusterização</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Otimização</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="bg-gray">
-    <div class="container shadow">
-        <h2>Detalhes da Clusterização</h2>
-        <p>Veja abaixo como os ativos foram agrupados e selecionados:</p>
-        <div class="box">
-            <h3>Regra do Cotovelo</h3>
-            <p>O número ideal de clusters foi determinado com base na regra do cotovelo:</p>
-            <img src="{{ url_for('static', filename='elbow_method.png') }}" alt="Regra do Cotovelo" style="width:100%; border-radius: 8px;">
-        </div>
-        <a href="{{ url_for('resultado') }}" class="btn">Voltar ao Resultado</a>
+<body>
+    <div class="container">
+        <h1>Detalhes da Otimização</h1>
+        <p>
+            Abaixo estão os gráficos gerados durante o processo de otimização, com explicações detalhadas sobre cada um deles:
+        </p>
+
+        <h2>Método do Cotovelo</h2>
+        <p>O gráfico do método do cotovelo ajuda a identificar o número ideal de clusters para agrupar os ativos.</p>
+        <img src="{{ url_for('static', filename='grafico_cotovelo.png') }}" alt="Método do Cotovelo">
+
+        <h2>PCA (Análise de Componentes Principais)</h2>
+        <p>Este gráfico reduz as dimensões dos dados para duas componentes principais, permitindo visualizar os clusters formados.</p>
+        <img src="{{ url_for('static', filename='grafico_pca.png') }}" alt="PCA dos Clusters">
+
+        <h2>Comparação de Carteiras</h2>
+        <p>Compara o desempenho da carteira otimizada com outras estratégias e o índice de referência.</p>
+        <img src="{{ url_for('static', filename='grafico_comparacao_carteiras.png') }}" alt="Comparação de Carteiras">
+
+        <h2>Distribuição de Retornos</h2>
+        <p>Mostra a dispersão dos retornos diários dos ativos selecionados.</p>
+        <img src="{{ url_for('static', filename='grafico_distribuicao_retornos.png') }}" alt="Distribuição de Retornos">
+
+        <h2>Matriz de Correlação</h2>
+        <p>Analisa a correlação entre os ativos selecionados, ajudando a entender a diversificação do portfólio.</p>
+        <img src="{{ url_for('static', filename='grafico_correlacao.png') }}" alt="Matriz de Correlação">
+
+        <h2>Mapa Risco-Retorno</h2>
+        <p>Mostra a relação entre risco e retorno dos clusters identificados.</p>
+        <img src="{{ url_for('static', filename='grafico_risco_retorno.png') }}" alt="Mapa Risco-Retorno">
+
+        <h2>Silhouette Score</h2>
+        <p>Avalia a qualidade da clusterização, indicando o quão bem os ativos foram agrupados.</p>
+        <img src="{{ url_for('static', filename='grafico_silhouette.png') }}" alt="Silhouette Score">
+
+        <h2>Métricas de Performance</h2>
+        <p>Compara métricas como retorno total, volatilidade e Sharpe Ratio entre diferentes carteiras.</p>
+        <img src="{{ url_for('static', filename='grafico_metricas.png') }}" alt="Métricas de Performance">
+
+        <h2>Composição da Carteira</h2>
+        <p>Mostra a alocação percentual dos ativos selecionados na carteira otimizada.</p>
+        <img src="{{ url_for('static', filename='grafico_composicao_carteira.png') }}" alt="Composição da Carteira">
     </div>
 </body>
 </html>

@@ -1,54 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Questionário de Perfil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="bg-gray">
-    <div class="container shadow">
-        <h2>Questionário de Perfil do Investidor</h2>
+<body>
+    <div class="container">
+        <h1>Monte seu Portfólio</h1>
         <form action="{{ url_for('processar') }}" method="post">
-            <div class="box">
-                <label>Qual seu objetivo principal?</label>
-                <select name="objetivo" required>
-                    <option value="">Selecione</option>
-                    <option value="conservador">Preservar capital</option>
-                    <option value="moderado">Equilibrar risco e retorno</option>
-                    <option value="arrojado">Maximizar retorno</option>
-                </select>
-            </div>
-            <div class="box">
-                <label>Qual o número máximo de ativos que você quer ter?</label>
-                <input type="number" name="n_ativos" min="5" max="20" required>
-            </div>
-            <div class="box">
-                <label>Qual o seu horizonhte de investimento em anos?</label>
-                <input type="number" name="max_ativos" min="1" max="20" required>
-            </div>
-            <!--
-            <div class="box">
-                <label>Qual seu horizonte de investimento?</label>
-                <select name="horizonte" required>
-                    <option value="">Selecione</option>
-                    <option value="curto">Até 1 ano</option>
-                    <option value="medio">1 a 5 anos</option>
-                    <option value="longo">Mais de 5 anos</option>
-                </select>
-            </div>
-            -->
+            <label for="ativos">Quais ativos deseja incluir?</label>
+            <select name="ativos" id="ativos">
+                <option value="BR">Ações Brasil</option>
+                <option value="EUA">Ações Americanas</option>
+                <option value="ETFs">ETFs</option>
+            </select>
 
-            <div class="box">
-                <label>Qual sua visão sobre Bitcoin?</label>
-                <select name="Bitcoin" required>
-                    <option value="">Selecione</option>
-                    <option value="0.4">É a maior invenção da humanidade</option>
-                    <option value="0.15">É genial</option>
-                    <option value="0.5">É interessante, mas não acho que vá mudar o mundo</option>
-                    <option value="0">Isso ai é uma fraude</option>
-                </select>
-            </div>
-            <button type="submit" class="btn">Ver Portfólio</button>
+            <label for="prazo">Prazo de investimento (em meses):</label>
+            <input type="number" name="prazo" id="prazo" min="1" max="60" required>
+
+            <input type="submit" value="Enviar">
         </form>
     </div>
 </body>

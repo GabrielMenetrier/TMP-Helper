@@ -1,39 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Resultado do Portfólio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Otimização</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="bg-gray">
-    <div class="container shadow">
-        <h2>Seu Portfólio Otimizado</h2>
-        <div class="box">
-            <p>Ativos selecionados e proporções ideais:</p>
-            <table>
-                <tr>
-                    <th>Ativo</th>
-                    <th>Peso (%)</th>
-                </tr>
-                {% for ativo, peso in proporcoes.items() %}
-                <tr>
-                    <td>{{ ativo }}</td>
-                    <td>{{ peso }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-            <h3>Métricas do Portfólio</h3>
-            <ul>
-                <li>Retorno esperado: {{ metricas['Retorno (%)'] }} % a.a.</li>
-                <li>Risco (volatilidade): {{ metricas['Risco (%)'] }} % a.a.</li>
-                <li>Sharpe: {{ metricas['Sharpe'] }}</li>
-            </ul>
-            <a href="{{ url_for('index') }}" class="btn">Voltar ao início</a>
-        </div>
-        <div class="box">
-            <h3>Quer saber como chegamos neste portfólio?</h3>
-            <a href="{{ url_for('detalhes') }}" class="btn">Ver Detalhes</a>
-        </div>
+<body>
+    <div class="container">
+        <h1>Resultado da Otimização</h1>
+        <p>
+            Após analisar o mercado {{ mercado }} nos últimos {{ meses }} meses, os seguintes ativos foram selecionados para compor o portfólio otimizado:
+        </p>
+        <ul>
+            {% for ticker in tickers_selecionados %}
+                <li>
+                    {{ ticker }}: 
+                    {{ pesos_inv_vol[ticker] * 100 | round(2) }}% (Inverso da Volatilidade), 
+                    {{ pesos_ret[ticker] * 100 | round(2) }}% (Retorno Histórico)
+                </li>
+            {% endfor %}
+        </ul>
+        <h2>Comparação de Backtest</h2>
+        <p>Veja abaixo o desempenho da carteira otimizada em comparação com o índice de referência:</p>
+        <img src="{{ url_for('static', filename='grafico_comparacao_carteiras.png') }}" alt="Gráfico de Comparação de Carteiras">
+        <a href="{{ url_for('detalhes') }}">Ver Gráficos Detalhados</a>
     </div>
 </body>
 </html>
