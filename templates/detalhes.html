@@ -13,13 +13,14 @@
             Abaixo estão os gráficos gerados durante o processo de otimização, com explicações detalhadas sobre cada um deles:
         </p>
 
+        <h2>PCA (Análise de Componentes Principais)</h2>
+        <p>Iniciamos nossa </p>
+        <img src="{{ url_for('static', filename='grafico_pca.png') }}" alt="PCA dos Clusters">
+
+
         <h2>Método do Cotovelo</h2>
         <p>O gráfico do método do cotovelo ajuda a identificar o número ideal de clusters para agrupar os ativos.</p>
         <img src="{{ url_for('static', filename='grafico_cotovelo.png') }}" alt="Método do Cotovelo">
-
-        <h2>PCA (Análise de Componentes Principais)</h2>
-        <p>Este gráfico reduz as dimensões dos dados para duas componentes principais, permitindo visualizar os clusters formados.</p>
-        <img src="{{ url_for('static', filename='grafico_pca.png') }}" alt="PCA dos Clusters">
 
         <h2>Comparação de Carteiras</h2>
         <p>Compara o desempenho da carteira otimizada com outras estratégias e o índice de referência.</p>
@@ -37,17 +38,6 @@
         <p>Mostra a relação entre risco e retorno dos clusters identificados.</p>
         <img src="{{ url_for('static', filename='grafico_risco_retorno.png') }}" alt="Mapa Risco-Retorno">
 
-        <h2>Silhouette Score</h2>
-        <p>Avalia a qualidade da clusterização, indicando o quão bem os ativos foram agrupados.</p>
-        <img src="{{ url_for('static', filename='grafico_silhouette.png') }}" alt="Silhouette Score">
-
-        <h2>Métricas de Performance</h2>
-        <p>Compara métricas como retorno total, volatilidade e Sharpe Ratio entre diferentes carteiras.</p>
-        <img src="{{ url_for('static', filename='grafico_metricas.png') }}" alt="Métricas de Performance">
-
-        <h2>Composição da Carteira</h2>
-        <p>Mostra a alocação percentual dos ativos selecionados na carteira otimizada.</p>
-        <img src="{{ url_for('static', filename='grafico_composicao_carteira.png') }}" alt="Composição da Carteira">
     </div>
 </body>
 </html>

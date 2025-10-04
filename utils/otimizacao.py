@@ -30,13 +30,15 @@ def baixar_dados(tickers, start_date='2010-01-01', end_date='2025-01-01'):
 
     return data,returns,final_retorno_acumulado
 
-def features_para_cluster(data,retorno,final_retorno_acumulado):
+def features_para_cluster(data,retorno,final_retorno_acumulado,meses):
 
     features = pd.DataFrame(index=data['Close'].columns)
 
-    features['Retorno_Medio'] = retorno.mean() * 252
 
-    features['Volatilidade'] = retorno.std() * np.sqrt(252)
+    periodo_dias = meses * 21
+
+    features['Retorno_Medio'] = retorno.mean() * periodo_dias
+    features['Volatilidade'] = retorno.std() * np.sqrt(periodo_dias)
 
     features['Sharpe'] = np.where(
         features['Volatilidade'] > 0,
@@ -245,7 +247,9 @@ def gerar_graficos(features, clusters, retorno,
 
     mercaados = {
         'BR' : '^BVSP',
-        'EUA' : '^GSPC'
+        'EUA' : '^GSPC',
+        'Conjunto ETFs Macro': '^GSPC',
+        'ETFs Globais' : '^GSPC'
     }
     fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -401,32 +405,88 @@ def gerar_graficos(features, clusters, retorno,
     plt.savefig('static/grafico_composicao_carteira.png')
     plt.close()
     '''
+
 def mercados(resposta):
     mercados = {
-    'BR' : [
-    "PETR4.SA", "VALE3.SA", "ITUB4.SA", "BBDC4.SA", "ABEV3.SA",
-    "BBAS3.SA", "ELET3.SA", "RENT3.SA", "WEGE3.SA", "SUZB3.SA",
-    "MGLU3.SA", "B3SA3.SA", "GGBR4.SA", "BRFS3.SA", "CSNA3.SA",
-    "PRIO3.SA", "LREN3.SA", "KLBN11.SA", "HAPV3.SA", "EQTL3.SA"
-    ],
-    'EUA' : [
-    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA",
-    "META", "TSLA", "BRK-B", "JPM", "JNJ",
-    "V", "PG", "XOM", "HD", "MA",
-    "UNH", "PFE", "DIS", "KO", "NFLX"
-    ],
-    'ETFs' : [
-    "IVVB11.SA",  # S&P 500
-    "TECK11.SA",  # Tecnologia global
-    "HTEK11.SA",  # Healthtech
-    "IBOV11.SA",  # Reversão (quant)
-    "WRLD11.SA",  # Ações globais
-    "UTEC11.SA",  # Tecnologia dos EUA
-    "QQQI11.SA",  # Nasdaq-100 (alternativo ao QQQ)
-    "HASH11.SA",  # Small Caps dos EUA
-    "GOLD11.SA",  # Dólar americano
-    ]
-    }
+        'BR': [
+            # Financeiro
+            "ITUB4.SA", "BBDC4.SA", "BBAS3.SA", "SANB11.SA", "BPAC11.SA",
+            # Commodities / Energia
+            "PETR4.SA", "VALE3.SA", "PRIO3.SA", "CSNA3.SA", "GGBR4.SA",
+            "USIM5.SA", "SUZB3.SA", "KLBN11.SA", "BRKM5.SA",
+            # Consumo
+            "ABEV3.SA", "LREN3.SA", "MGLU3.SA", "VVAR3.SA", "ARZZ3.SA",
+            "PCAR3.SA", "NTCO3.SA",
+            # Infraestrutura e serviços
+            "EQTL3.SA", "ELET3.SA", "ENGI11.SA", "CMIG4.SA", "TAEE11.SA",
+            # Saúde
+            "HAPV3.SA", "RADL3.SA", "FLRY3.SA",
+            # Outros setores
+            "RENT3.SA", "B3SA3.SA", "WEGE3.SA", "MULT3.SA", "CYRE3.SA",
+        ],
+        # 🇺🇸 Mercado Americano — Blue chips, techs e setores tradicionais
+        'EUA': [
+            # Tech e Comunicação
+            "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA", "NFLX", "ADBE",
+            # Financeiro
+            "JPM", "GS", "BAC", "MS", "V", "MA", "BLK", "C",
+            # Saúde
+            "JNJ", "PFE", "UNH", "ABBV", "MRK", "TMO", "CVS",
+            # Energia e Indústria
+            "XOM", "CVX", "CAT", "BA", "GE", "MMM", "HON",
+            # Consumo
+            "PG", "KO", "PEP", "MCD", "DIS", "NKE", "COST", "WMT",
+            # Diversificação
+            "BRK-B", "INTC", "IBM", "ORCL", "AVGO"
+        ],
+        'ETFs Globais': [
+                "SPY",     # S&P 500 (SPDR)
+                "IVV",     # S&P 500 (iShares)
+                "VOO",     # S&P 500 (Vanguard)
+                "VTI",     # Total US Stock Market
+                "VT",      # Global Total Market
+                "VEA",     # Developed Markets (ex-US)
+                "VWO",     # Emerging Markets
+            ],
+
+        'Conjunto ETFs Macro': [
+                "XLK",     # Tecnologia
+                "XLF",     # Financeiro
+                "XLV",     # Saúde
+                "XLE",     # Energia
+                "XLY",     # Consumo Discricionário
+                "XLP",     # Consumo Básico
+                "XLI",     # Indústria
+                "XLRE",    # Real Estate (Imobiliário)
+                "XLC",     # Comunicação
+                "SMH",     # Semicondutores
+                "ARKK",    # Inovação disruptiva (Cathie Wood)
+                "QQQ",     # Nasdaq-100
+                "SKYY",    # Cloud computing
+                "BOTZ",    # Robótica e IA
+                "FINX",    # Fintechs
+                "CLOU",    # Computação em nuvem
+                "IEUR",    # Europa
+                "EWG",     # Alemanha
+                "EWU",     # Reino Unido
+                "EWJ",     # Japão
+                "EWW",     # México
+                "EWH",     # Hong Kong
+                "EWA",     # Austrália
+                "EWC",     # Canadá
+                "GLD",     # Ouro
+                "SLV",     # Prata
+                "USO",     # Petróleo WTI
+                "DBA",     # Agricultura
+                "UUP",     # Dólar americano
+                "FXE",     # Euro
+                "FXY",     # Iene
+                "VNQ",     # Vanguard Real Estate
+                "SCHH",    # Schwab US REIT
+                "IYR",     # iShares US Real Estate
+                "XLRE",    # Real Estate (SPDR)
+            ]
+        }
     return mercados[resposta]
 
 def separar_datas(meses):
@@ -453,7 +513,7 @@ def main_otimizacao(mercado,meses):
 
     data, returns, final = baixar_dados(tickers,end_date=inicio)
 
-    features, features_scaled = features_para_cluster(data, returns, final)
+    features, features_scaled = features_para_cluster(data, returns, final, meses)
     
     optimal_k, inertias, silhouette_scores= cluster_cotovelo(features_scaled)
     
