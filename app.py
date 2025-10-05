@@ -20,17 +20,30 @@ def processar():
     # 1. Seleciona o mercado e o período
     mercado = respostas.get('ativos', 'BR')  # Exemplo: 'BR', 'EUA', 'ETFs'
     meses = int(respostas.get('prazo', 6))  # Período em meses
+    proporcao = respostas.get('prop','prop_iguais')
 
     # 2. Realiza a otimização do portfólio
     pesos_inv_vol, pesos_ret, tickers_selecionados = main_otimizacao(mercado, meses)
+    if proporcao == 'inv_var':
+        pesos = pesos_inv_vol
+        descricao = "Inverso da variância (menor risco)"
+    elif proporcao == 'prop_esp':
+        pesos = pesos_ret
+        descricao = "Retorno esperado (maior risco)"
+    else:
+        # Proporções iguais
+        n = len(tickers_selecionados)
+        pesos = {t: 1/n for t in tickers_selecionados}
+        descricao = "Proporções iguais (risco balanceado)"
+
+
 
     # 3. Redireciona para a página de resultados com os dados
     return render_template(
         'resultado.html',
         mercado=mercado,
         meses=meses,
-        pesos_inv_vol=pesos_inv_vol,
-        pesos_ret=pesos_ret,
+        pesos=pesos,
         tickers_selecionados=tickers_selecionados
     )
 

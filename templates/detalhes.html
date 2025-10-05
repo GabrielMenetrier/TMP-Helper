@@ -14,28 +14,33 @@
         </p>
 
         <h2>PCA (Análise de Componentes Principais)</h2>
-        <p>Iniciamos nossa </p>
+        <p>Para iniciar a seleção da carteira, precisamor escolher quais ativos vamos comprar. 
+        Para isso, utilizamos inicalemten a análise de componentes principais para agrupar ativos.
+        </p>
         <img src="{{ url_for('static', filename='grafico_pca.png') }}" alt="PCA dos Clusters">
 
 
         <h2>Método do Cotovelo</h2>
-        <p>O gráfico do método do cotovelo ajuda a identificar o número ideal de clusters para agrupar os ativos.</p>
+        <p>Então utilizamos o método do cotovelo para decidir o número ótimo de grupos. Esse número representa a quantidade em que
+            adicionar um elemento a mais não aumenta significativamente a informação que estamos capturando ao deixar de ter mais um ativo na carteira.</p>
         <img src="{{ url_for('static', filename='grafico_cotovelo.png') }}" alt="Método do Cotovelo">
 
-        <h2>Comparação de Carteiras</h2>
-        <p>Compara o desempenho da carteira otimizada com outras estratégias e o índice de referência.</p>
+        <h2></h2>
+        <p>Então, a partir dos representantes de cada cluster, montamos 3 carteiras, a com pesos iguais, a com pesos proporcionais ao retorno esperado e a com inversamente proporcionais a variancia.
+            Selecionamos as carteiras, e escolhemos o prazo de investimento como data para o backtest, isso faz sentido pois a plataforma será usada no prazo de investimento que o cliente seleciona.
+            Portanto, o gráfico do backtest compara o desempenho das carteiras otimizadas com outras estratégias e o índice de referência (Ibovespa pra ações Brasileiras e S&P para outros).</p>
         <img src="{{ url_for('static', filename='grafico_comparacao_carteiras.png') }}" alt="Comparação de Carteiras">
 
         <h2>Distribuição de Retornos</h2>
-        <p>Mostra a dispersão dos retornos diários dos ativos selecionados.</p>
+        <p>Esse gráfico compara os ativos escolhidos. Perceba que todos os ativos escolhidos possuem retorno maior que a média</p>
         <img src="{{ url_for('static', filename='grafico_distribuicao_retornos.png') }}" alt="Distribuição de Retornos">
 
         <h2>Matriz de Correlação</h2>
-        <p>Analisa a correlação entre os ativos selecionados, ajudando a entender a diversificação do portfólio.</p>
+        <p>Ao maximizar a carteira, deveríamos ter em mente as correlações entre os ativos. O método implementado de markowitz as usa, mas ele não é funcional em todos os casos, já que necessita de matriz de ativos suficientemente rica.</p>
         <img src="{{ url_for('static', filename='grafico_correlacao.png') }}" alt="Matriz de Correlação">
 
         <h2>Mapa Risco-Retorno</h2>
-        <p>Mostra a relação entre risco e retorno dos clusters identificados.</p>
+        <p>Esse gráfico mostra a relação dos retornos diários dos ativos selecionados com o risco e ao seu cluster escolhido. Ele é importante pois escolhemos apenas o "melhor" indivíduo de cada cluster.</p>
         <img src="{{ url_for('static', filename='grafico_risco_retorno.png') }}" alt="Mapa Risco-Retorno">
 
     </div>

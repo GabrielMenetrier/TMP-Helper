@@ -8,21 +8,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>Resultado da Otimização</h1>
-        <p>
-            Após analisar o mercado {{ mercado }} nos últimos {{ meses }} meses, os seguintes ativos foram selecionados para compor o portfólio otimizado:
-        </p>
+        <h1>Portfólio Otimizado</h1>
+        <p>Estratégia: <strong>{{ descricao }}</strong></p>
         <ul>
             {% for ticker in tickers_selecionados %}
                 <li>
-                    {{ ticker }}: 
-                    {{ pesos_inv_vol[ticker] * 100 | round(2) }}% (Inverso da Volatilidade), 
-                    {{ pesos_ret[ticker] * 100 | round(2) }}% (Retorno Histórico)
+                    {{ ticker }}: {{ pesos[ticker] * 100 | round(2) }}%
                 </li>
             {% endfor %}
         </ul>
         <h2>Comparação de Backtest</h2>
-        <p>Veja abaixo o desempenho da carteira otimizada em comparação com o índice de referência:</p>
         <img src="{{ url_for('static', filename='grafico_comparacao_carteiras.png') }}" alt="Gráfico de Comparação de Carteiras">
         <a href="{{ url_for('detalhes') }}">Ver Gráficos Detalhados</a>
     </div>

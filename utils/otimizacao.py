@@ -4,6 +4,7 @@ import os
 import pandas as pd
 import yfinance as yf
 import numpy as np
+from sklearn.metrics import silhouette_score
 from sklearn.impute import SimpleImputer
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
@@ -80,6 +81,49 @@ def features_para_cluster(data,retorno,final_retorno_acumulado,meses):
 def cluster_cotovelo(features_scaled):
     n_samples = len(features_scaled)
     min_k = 2
+    max_k = min(15, max(2, n_samples - 1))  # Permitir até 15 clusters, se possível
+
+    if max_k < min_k:
+        optimal_k = 2
+        print(f"⚠️ Poucos dados. Usando k={optimal_k}")
+        inertias = []
+        silhouette_scores = []
+        K = [optimal_k]
+    else:
+        K = list(range(min_k, max_k + 1))
+        inertias = []
+        silhouette_scores = []
+        
+        for k in K:
+            try:
+                kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+                kmeans.fit(features_scaled)
+                inertias.append(kmeans.inertia_)
+                
+                if k < n_samples:
+                    score = silhouette_score(features_scaled, kmeans.labels_)
+                    silhouette_scores.append(score)
+            except:
+                inertias.append(float('inf'))
+                silhouette_scores.append(0)
+        
+        # Encontrar cotovelo usando a segunda derivada da inércia
+        if len(inertias) >= 3:
+            reductions = np.diff(inertias)
+            second_derivative = np.diff(reductions)
+            if len(second_derivative) > 0:
+                optimal_k = min_k + np.argmax(second_derivative) + 1
+            else:
+                optimal_k = 3
+        else:
+            optimal_k = min(3, max_k)
+        
+        optimal_k = max(min_k, min(optimal_k, max_k))
+    return optimal_k, inertias, silhouette_scores
+'''
+def cluster_cotovelo(features_scaled):
+    n_samples = len(features_scaled)
+    min_k = 2
     max_k = min(8, max(2, n_samples - 1))
 
     if max_k < min_k:
@@ -119,7 +163,7 @@ def cluster_cotovelo(features_scaled):
         
         optimal_k = max(min_k, min(optimal_k, max_k))
     return optimal_k, inertias, silhouette_scores
-
+'''
 def clusters(features_scaled, optimal_k):
 
     kmeans = KMeans(n_clusters=optimal_k, random_state=42, n_init=10)
@@ -178,7 +222,7 @@ def gerar_graficos(features, clusters, retorno,
                 retorno_acumulado_all, retorno_acumulado_selected, 
                 df_combinado, silhouette_scores, K, inertias,
                 optimal_k, tickers_selecionados,
-                pesos_inv_vol, pesos_ret, data_inicio_teste, mercado
+                pesos_inv_vol, pesos_ret, data_inicio_teste, mercado, tickers
                 ):
     """
     Gera 9 gráficos diferentes e os salva na pasta 'static'.
@@ -256,7 +300,7 @@ def gerar_graficos(features, clusters, retorno,
     # 1️⃣ Ibovespa
     ibov = yf.download(mercaados[mercado], start=data_inicio_teste, end=pd.Timestamp.today())
     ibov_retorno = (1 + ibov['Close'].pct_change().fillna(0)).cumprod()
-    ibov_retorno.plot(ax=ax, label='Ibovespa', linewidth=2, color='green')
+    ibov_retorno.plot(ax=ax, label='Ibovespa', linewidth=2, color='#E53935')
 
     # 2️⃣ Dados dos tickers selecionados
     dados = yf.download(tickers_selecionados, start=data_inicio_teste, end=pd.Timestamp.today())['Close']
@@ -265,20 +309,29 @@ def gerar_graficos(features, clusters, retorno,
     # 3️⃣ Carteira Inverse Volatility
     ret_inv_vol = retorno.dot(pd.Series(pesos_inv_vol))
     ret_acum_inv_vol = (1 + ret_inv_vol).cumprod()
-    ret_acum_inv_vol.plot(ax=ax, label='Carteira Inv. Vol.', linewidth=2, linestyle='--', color='blue')
+    ret_acum_inv_vol.plot(ax=ax, label='Carteira Inv. Vol.', linewidth=2, linestyle='--', color='#9B59B6', alpha = 0.5)
 
     # 5️⃣ Carteira Retorno Histórico
     ret_ret = retorno.dot(pd.Series(pesos_ret))
     ret_acum_ret = (1 + ret_ret).cumprod()
-    ret_acum_ret.plot(ax=ax, label='Carteira Ret. Hist.', linewidth=2, linestyle='--', color='orange')
+    ret_acum_ret.plot(ax=ax, label='Carteira Ret. Hist.', linewidth=2, linestyle='--', color='#8A2BE2', alpha = 0.5)
 
+    # 2️⃣ Dados dos tickers selecionados
+    dados_all = yf.download(tickers, start=data_inicio_teste, end=pd.Timestamp.today())['Close']
+    retorno_all = dados_all.pct_change().fillna(0)
+    
     # 6️⃣ Todos os tickers (média simples)
-    retorno_acumulado_all = (1 + retorno.mean(axis=1)).cumprod()
-    retorno_acumulado_all.plot(ax=ax, label='Todos os Tickers', linewidth=2)
+    retorno_acumulado_all = (1 + retorno_all.mean(axis=1)).cumprod()
+    retorno_acumulado_all.plot(ax=ax, label='Todos os Tickers', linewidth=2, color = '#B57EDC')
 
     # 7️⃣ Seleção por clusters
     retorno_acumulado_selected = (1 + retorno[tickers_selecionados].mean(axis=1)).cumprod()
-    retorno_acumulado_selected.plot(ax=ax, label='Seleção por Clusters', linewidth=2, color='red')
+    retorno_acumulado_selected.plot(ax=ax, label='Seleção por Clusters', linewidth=2, color='#800080')
+
+    # Carteira Secreta do Santi
+    hash11 = yf.download('HASH11.SA', start=data_inicio_teste, end=pd.Timestamp.today())
+    hash11_retorno = (1 + hash11['Close'].pct_change().fillna(0)).cumprod().squeeze()
+    hash11_retorno.plot(ax=ax, label='Carteira Secreta', linewidth=2, color='#FFD700', alpha=0.5)
 
     # Configurações do gráfico
     plt.title('Comparação de Desempenho das Carteiras')
@@ -533,6 +586,6 @@ def main_otimizacao(mercado,meses):
 
     gerar_graficos(features, cluster, returns, retorno_acumulado_all,
     retorno_acumulado_selected, df_combinado, silhouette_scores, list(range(2, 2 + len(inertias))), inertias,
-    optimal_k, tickers_selecionados, pesos_inv_vol, pesos_ret, inicio, mercado)
+    optimal_k, tickers_selecionados, pesos_inv_vol, pesos_ret, inicio, mercado, tickers)
 
     return pesos_inv_vol, pesos_ret, tickers_selecionados

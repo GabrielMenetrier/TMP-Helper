@@ -18,10 +18,20 @@
                 <option value="ETFs Globais">ETFs Regionais</option>
             </select>
 
-            <label for="prazo">Prazo de investimento (em meses):</label>
+            <label for="prazo">Prazo de investimento backtest/investimento (em meses):</label>
             <input type="number" name="prazo" id="prazo" min="1" max="60" required>
 
+
+
+            <label for="prop">Qual o método de proporção?</label>
+            <select name="prop" id="prop">
+                <option value="inv_var">Inverso da variância - menor risco</option>
+                <option value="prop_iguais">Proporções Iguais - risco balanceado</option>
+                <option value="prop_esp">Retorno esperado - maior risco</option>
+
             <input type="submit" value="Enviar">
+            </select>
+
         </form>
     </div>
 </body>
