@@ -1,6 +1,0 @@
-Flask
-yfinance
-numpy
-pandas
-scipy
-scikit-learn
