@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Otimização</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Portfólio Otimizado</h1>
+        <p>Estratégia: <strong>{{ descricao }}</strong></p>
+        <ul>
+            {% for ticker in tickers_selecionados %}
+                <li>
+                    {{ ticker }}: {{ pesos[ticker] * 100 | round(2) }}%
+                </li>
+            {% endfor %}
+        </ul>
+        <h2>Comparação de Backtest</h2>
+        <img src="{{ url_for('static', filename='grafico_comparacao_carteiras.png') }}" alt="Gráfico de Comparação de Carteiras">
+        <a href="{{ url_for('detalhes') }}">Ver Gráficos Detalhados</a>
+    </div>
+</body>
+</html>
