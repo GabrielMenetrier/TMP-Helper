@@ -1,96 +1,115 @@
-/* Estilo geral */
+/* Textos narrativos menores e discretos */
+p, ul, ol {
+    font-size: 1.0em;
+    font-family: Verdana ;
+    color: #444;
+}
+/* =============================
+   PERSONALIZAÇÃO DA TABELA
+   =============================
+   Altere/adicione as regras abaixo conforme desejar. Cada comentário explica o efeito visual.
+*/
+
+/* Altera cor de fundo do cabeçalho da tabela */
+table.dataTable thead {
+    background: #a8b8ff; /* Cor do cabeçalho */
+    color: #363434;         /* Cor do texto do cabeçalho */
+}
+
+/* Altera cor de fundo das linhas pares */
+table.dataTable tbody tr:nth-child(even) {
+    background: #ecf0ff; /* Linhas pares mais claras */
+}
+
+/* Altera cor de fundo das linhas ímpares */
+table.dataTable tbody tr:nth-child(odd) {
+    background: #ecf0ff; /* Linhas ímpares padrão */
+}
+
+/* Destaca linha ao passar o mouse */
+table.dataTable tbody tr:hover {
+    background: #e0e7ff; /* Hover azul claro */
+}
+
+/* Altera borda das células da tabela */
+table.dataTable td, table.dataTable th {
+    border: 1px solid #c3cfe2; /* Borda azul clara */
+}
+
+/* Alinha texto da primeira coluna à esquerda */
+table.dataTable tbody td:first-child {
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Alinha texto das demais colunas ao centro */
+table.dataTable tbody td:not(:first-child) {
+    text-align: center;
+}
+
+/* Altera o tamanho da fonte da tabela */
+table.dataTable {
+    font-size: 1em; /* Aumente ou diminua conforme desejar */
+}
+
+/* Exemplo: cor especial para células com valor negativo */
+table.dataTable td.negativo {
+    color: #e53e3e; /* Vermelho para valores negativos */
+    font-weight: bold;
+}
+
+/* Exemplo: cor especial para células com valor positivo */
+table.dataTable td.positivo {
+    color: #38a169; /* Verde para valores positivos */
+    font-weight: bold;
+}
+
+/* Linhas das empresas (não colapsáveis) */
+table.dataTable tbody tr:not(.group) {
+    background: #eaeef3; /* Cor de fundo diferente */
+    font-style: italic;  /* Exemplo: texto em itálico */
+    /* Adicione outros estilos que quiser */
+    border-left: 4px solid #667eea;
+    color: #444;
+    padding: 3px;
+}
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     color: #333;
 }
 
 .container {
-    width: 90%;
     max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 30px auto;
+    padding: 30px;
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-h1, h2, h3 {
-    color: #444;
+h1, h2 {
+    color: #667eea;
     margin-bottom: 20px;
 }
 
-p {
-    margin: 10px 0;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul li {
-    background: #e4e4e4;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-a {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 15px;
-    background: #007BFF;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-a:hover {
-    background: #0056b3;
-}
-
-img {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px;
-    background: #fff;
-    max-width: 100%;
-}
-
-button, input[type="submit"] {
-    background: #007BFF;
-    color: #fff;
+.btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background 0.3s;
+    text-decoration: none;
+    margin-top: 30px;
+    display: inline-block;
 }
 
-button:hover, input[type="submit"]:hover {
-    background: #0056b3;
+.btn:hover {
+    background: #764ba2;
 }
 
-form label {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-}
-
-form input, form select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-form input[type="submit"] {
-    width: auto;
-    margin-top: 10px;
+.table th, .table td {
+    vertical-align: middle !important;
 }

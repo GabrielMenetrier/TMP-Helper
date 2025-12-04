@@ -1,0 +1,108 @@
+/* Estilos básicos do documento */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte moderna */
+    line-height: 1.6;
+    max-width: 1050px; /* Largura máxima para melhor leitura */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    padding: 20px;
+    background-color: #f9f9f9; /* Fundo levemente cinza */
+    color: #333;
+}
+
+/* Títulos */
+h1, h2, h3 {
+    color: #0056b3; /* Azul primário */
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 8px;
+    margin-top: 30px;
+}
+
+/* Células de Código (Input) */
+pre, code {
+    font-family: 'Consolas', 'Fira Code', 'Courier New', monospace;
+    font-size: 0.95em;
+}
+
+pre {
+    background-color: #eee;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    border-left: 5px solid #0056b3; /* Borda lateral para destaque */
+    margin-bottom: 20px;
+}
+
+/* Células de Saída (Output) - Alvo para classes comuns de saída */
+.output_area, .jp-OutputArea-output, .output {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Sombra suave */
+}
+
+/* Estilo existente para Tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    /* Adicione 'table-layout: fixed;' para forçar as colunas a terem a mesma largura,
+       ou remova se for preferir o tamanho baseado no conteúdo. */
+    /* table-layout: fixed; */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    
+    /* MODIFICAÇÕES CRUCIAIS: */
+    /* Garante que o conteúdo não force a célula a ter uma largura mínima. */
+    word-wrap: break-word; 
+    /* Garante que o texto possa quebrar em qualquer palavra. */
+    overflow-wrap: break-word; 
+}
+
+th {
+    background-color: #eef;
+    color: #333;
+    /* NOVO: Garante que os cabeçalhos não fiquem sobrepostos forçando uma única linha */
+    white-space: normal; 
+    
+    /* Se você quer garantir um espaço mínimo para o cabeçalho: */
+    min-width: 80px; 
+}
+
+
+/* Células de Saída (Output) - Removendo a rolagem da célula inteira */
+.output_area, .jp-OutputArea-output, .output {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    
+    /* NOVO: Remove a rolagem horizontal da célula de output. */
+    /* Caso a célula esteja muito larga, remova esta linha: */
+    /* overflow-x: visible !important; */
+    
+    /* Se a rolagem não estiver na .output_area, mas em um div interno (ex: div.output_wrapper), procure-o no seu HTML
+       e aplique 'overflow: visible !important;' a ele. */
+}
+
+/* Ajuste para Imagens (Gráficos) - Garantindo que a imagem caiba */
+img {
+    max-width: 100% !important; /* Força a imagem a não ser maior que o contêiner */
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+    /* IMPORTANTE: Remova qualquer estilo 'width' fixo que possa ter vindo do HTML original 
+       ou garanta que max-width: 100% o sobrescreva. */
+}

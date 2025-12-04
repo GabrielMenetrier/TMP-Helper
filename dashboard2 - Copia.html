@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Modelos</title>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Dashboard dos Modelos</h1>
+    <section>
+      <h2>Resumo Metodológico</h2>
+      <p>Cada modelo utilizado nesta análise selecionava, mensalmente, um conjunto de <strong>10 ações</strong> consideradas mais promissoras segundo seus critérios internos. O objetivo deste dashboard é apresentar, de forma consolidada, todas as ações escolhidas por cada modelo ao longo do período analisado.</p>
+      <p><strong>Período de Teste:</strong></p>
+      <ul>
+        <li><strong>Data inicial:</strong> 05/03/2023</li>
+        <li><strong>Data final:</strong> 17/10/2024</li>
+      </ul>
+      <p>As ações estão organizadas por setor econômico e, dentro de cada setor, você pode expandir ou colapsar as listas de ativos para facilitar a navegação.</p>
+    </section>
+    <hr>
+    <h2>Ações Presentes em Cada Modelo</h2>
+    <h2>Visão Consolidada por Setor</h2>
+    <table id="tabelaMestra" class="display table" style="width:100%">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+    <div class="grafico">
+      <iframe src="static/grafico_retorno.html" width="100%" height="650"></iframe>
+    </div>
+    <div class="grafico">
+      <iframe src="static/grafico_alpha.html" width="100%" height="650"></iframe>
+    </div>
+    <!-- <a class="btn" href="#">Exportar Dados</a> -->
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script>
+// ===============================================
+// 1. DADOS (Seu JSON Original)
+// ===============================================
+const dadosModelos = [
+  {
+    "modelo": "RF",
+    "acao": "ITUB4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ITUB4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ITUB4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BBDC4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BBDC4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BBDC4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "RF",
+    "acao": "BBAS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BBAS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BBAS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SANB11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SANB11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SANB11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BPAC11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BPAC11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BPAC11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CXSE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CXSE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CXSE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRAP4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRAP4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRAP4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRSR6.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRSR6.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRSR6.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CRFB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CRFB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CRFB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PSSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PSSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PSSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PINE4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PINE4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PINE4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PETR4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PETR4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PETR4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "RF",
+    "acao": "PRIO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PRIO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PRIO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "OIBR4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "OIBR4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "OIBR4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ELET3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ELET3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ELET3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CMIG4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CMIG4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CMIG4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CPFE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CPFE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CPFE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "EGIE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "EGIE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "EGIE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ENGI11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ENGI11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ENGI11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "GEMA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "GEMA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "GEMA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "LIGHT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "LIGHT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "LIGHT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TRPL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TRPL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TRPL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "EQTL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "EQTL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "EQTL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "VALE3.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "VALE3.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "VALE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CSNA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CSNA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CSNA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "USIM5.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "USIM5.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "USIM5.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "GGBR4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "GGBR4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "GGBR4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "RF",
+    "acao": "MGLU3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "MGLU3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "MGLU3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "LREN3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "LREN3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "LREN3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ABEV3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ABEV3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ABEV3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "RENT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "RENT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "RENT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "MOVI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "MOVI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "MOVI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "VVAR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "VVAR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "VVAR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PCAR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PCAR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PCAR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TRIS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TRIS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TRIS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "WEGE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "WEGE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "WEGE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "JBSS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "JBSS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "JBSS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "MSFT34.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "MSFT34.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "MSFT34.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "HYPE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "HYPE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "HYPE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SLCE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SLCE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SLCE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PETZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PETZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PETZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ARZZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ARZZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ARZZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TFCO4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TFCO4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TFCO4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRML3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRML3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRML3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "RAIL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "RAIL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "RAIL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CCRO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CCRO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CCRO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "LOGB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "LOGB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "LOGB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ARZZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ARZZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ARZZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "EMAE4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "EMAE4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "EMAE4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ATUS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ATUS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ATUS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "MRVE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "MRVE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "MRVE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TEND3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TEND3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TEND3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PLPL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PLPL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PLPL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "GFSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "GFSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "GFSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TRAD3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TRAD3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TRAD3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "VLID3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "VLID3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "VLID3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRIV3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRIV3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRIV3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CYRE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CYRE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CYRE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "EVEN3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "EVEN3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "EVEN3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "HBOR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "HBOR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "HBOR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "VIVT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "VIVT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "VIVT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TIMS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TIMS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TIMS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "OIBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "OIBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "OIBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SUZB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SUZB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SUZB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SBSP3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SBSP3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SBSP3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "KLABIN11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "KLABIN11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "KLABIN11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "FIBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "FIBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "FIBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TOTS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TOTS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TOTS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRPR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRPR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRPR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CLSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CLSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CLSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "MBLY3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "MBLY3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "MBLY3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRF3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRF3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRF3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SEQL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SEQL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SEQL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ASAI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ASAI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ASAI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TOTS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TOTS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TOTS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "NTCO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "NTCO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "NTCO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRQT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRQT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRQT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "DIRR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "DIRR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "DIRR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TRPL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TRPL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TRPL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "EMBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "EMBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "EMBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "AZUL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "AZUL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "AZUL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "GOLL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "GOLL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "GOLL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PSSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PSSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PSSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SULB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SULB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SULB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SGUP3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SGUP3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SGUP3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "B3SA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "B3SA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "B3SA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "MOVI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "MOVI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "MOVI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "RBRR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "RBRR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "RBRR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "RDOR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "RDOR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "RDOR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "AGRO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "AGRO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "AGRO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "AERI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "AERI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "AERI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "POSI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "POSI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "POSI3.SA",
+    "presente": 0
+  }
+];
+
+const setores = {
+    "Bancos": ["ITUB4.SA","BBDC4.SA","BBAS3.SA","SANB11.SA","BPAC11.SA","CXSE3.SA","BRAP4.SA","BRSR6.SA","CRFB3.SA","PSSA3.SA","PINE4.SA"],
+    "Energia": ["PETR4.SA","PRIO3.SA","OIBR4.SA","ELET3.SA","CMIG4.SA","CPFE3.SA","EGIE3.SA","ENGI11.SA","GEMA3.SA","LIGHT3.SA","TRPL4.SA","EQTL3.SA"],
+    "Mineração": ["VALE3.SA","CSNA3.SA","USIM5.SA","GGBR4.SA"],
+    "Varejo": ["MGLU3.SA","LREN3.SA","ABEV3.SA","RENT3.SA","MOVI3.SA","VVAR3.SA","PCAR3.SA","TRIS3.SA"],
+    "Consumo": ["WEGE3.SA","JBSS3.SA","MSFT34.SA","HYPE3.SA","SLCE3.SA","PETZ3.SA","ARZZ3.SA","TFCO4.SA","BRML3.SA"],
+    "Transporte": ["RAIL3.SA","CCRO3.SA","LOGB3.SA","ARZZ3.SA","EMAE4.SA","ATUS3.SA"],
+    "Construção": ["MRVE3.SA","TEND3.SA","PLPL3.SA","GFSA3.SA","TRAD3.SA"],
+    "Imóveis": ["VLID3.SA","BRIV3.SA","CYRE3.SA","EVEN3.SA","HBOR3.SA"],
+    "Comunicação": ["VIVT3.SA","TIMS3.SA","OIBR3.SA"],
+    "Papel e Celulose": ["SUZB3.SA","SBSP3.SA","KLABIN11.SA","FIBR3.SA"],
+    "Química / Higiene": ["TOTS3.SA","BRPR3.SA","CLSA3.SA"],
+    "Alimentos": ["MBLY3.SA","BRF3.SA","SEQL3.SA","ASAI3.SA"],
+    "Tecnologia": ["TOTS3.SA","NTCO3.SA","BRQT3.SA","DIRR3.SA","TRPL4.SA"],
+    "Aviação": ["EMBR3.SA","AZUL4.SA","GOLL4.SA"],
+    "Seguros": ["PSSA3.SA","SULB3.SA","SGUP3.SA"],
+    "Financeiras": ["B3SA3.SA","MOVI3.SA","RBRR3.SA","RDOR3.SA"],
+    "Agronegócio": ["AGRO3.SA","AERI3.SA","POSI3.SA"]
+};
+
+// ===============================================
+// 2. PROCESSAMENTO DE DADOS (Transformar em Tabela Única)
+// ===============================================
+
+// Extrair lista única de modelos para criar as colunas
+const listaModelos = [...new Set(dadosModelos.map(x => x.modelo))];
+
+// Mapear presença para acesso rápido: mapa[acao][modelo] = 1 ou 0
+const mapaPresenca = {};
+dadosModelos.forEach(item => {
+    if (!mapaPresenca[item.acao]) mapaPresenca[item.acao] = {};
+    mapaPresenca[item.acao][item.modelo] = item.presente;
+});
+
+// Criar array plano de dados para o DataTables
+// Formato da linha: [ "Setor", "Ação", "CheckModelo1", "CheckModelo2"... ]
+const dadosTabela = [];
+
+Object.entries(setores).forEach(([nomeSetor, listaAcoes]) => {
+    listaAcoes.forEach(acao => {
+        const linha = [];
+        linha.push(nomeSetor); // Coluna 0 (será oculta e usada para agrupar)
+        linha.push(acao);      // Coluna 1 (Visível: Nome da Ação)
+
+        // Colunas dinâmicas dos modelos
+        listaModelos.forEach(modelo => {
+            const isPresente = (mapaPresenca[acao] && mapaPresenca[acao][modelo] === 1);
+            linha.push(isPresente ? "✅" : ""); // Use um ícone ou deixe vazio
+        });
+
+        dadosTabela.push(linha);
+    });
+});
+
+// ===============================================
+// 3. INICIALIZAÇÃO DO DATATABLES (Com Agrupamento)
+// ===============================================
+
+$(document).ready(function() {
+    // Gerar cabeçalho dinâmico HTML
+    let theadHtml = `
+        <tr>
+            <th>Setor</th> <th>Ação</th>
+            ${listaModelos.map(m => `<th>${m}</th>`).join("")}
+        </tr>
+    `;
+    $('#tabelaMestra thead').html(theadHtml);
+
+    var table = $('#tabelaMestra').DataTable({
+        data: dadosTabela,
+        pageLength: 100, // Mostrar muitas linhas pois vamos agrupar
+        order: [[0, 'asc'], [1, 'asc']], // Ordenar por Setor (0) depois Ação (1)
+
+        ordering: false,
+        
+        columnDefs: [
+            { "visible": false, "targets": 0 } // Esconder a coluna "Setor" (pois ela vira o cabeçalho do grupo)
+        ],
+
+        // Lógica de desenho para criar as linhas de agrupamento
+        drawCallback: function (settings) {
+            var api = this.api();
+            var rows = api.rows({page:'current'}).nodes();
+            var last = null;
+ 
+            api.column(0, {page:'current'}).data().each(function (group, i) {
+                if (last !== group) {
+                    $(rows).eq(i).before(
+                        '<tr class="group"><td colspan="'+(listaModelos.length + 1)+'">'+group+'</td></tr>'
+                    );
+                    last = group;
+                }
+            });
+        }
+        
+    });
+
+    // ===============================================
+    // 4. LÓGICA DE CLIQUE (COLAPSAR/EXPANDIR)
+    // ===============================================
+    $('#tabelaMestra tbody').on('click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        
+        // Se a tabela estiver ordenada pelo Setor (coluna 0), podemos fazer a lógica visual de esconder
+        if (currentOrder[0] === 0 && currentOrder[1] === 'asc') {
+            // Encontra todas as linhas seguintes até o próximo grupo
+            $(this).nextUntil('.group').toggle();
+        }
+    });
+    
+    // Opcional: Iniciar com todos colapsados (esconde as linhas que não são grupo)
+    $('#tabelaMestra tbody tr:not(.group)').hide(); 
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+/* GERAL E LAYOUT */
+body {
+    background-color: #f7f7f7; /* Fundo cinza claro */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+/* Centraliza o Conteúdo Principal (O que antes era o notebook) */
+#notebook-container {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-width: 1200px; /* Limite a largura para melhor leitura */
+    margin: 30px auto; /* Centraliza horizontalmente */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Limpa Elementos de Interface do Jupyter */
+/* Remove cabeçalhos e metadados que não são relevantes para o dashboard */
+#header,
+.prompt,
+.hbox,
+.border-box,
+.toc {
+    display: none !important;
+}
+
+/* ESTILO DAS CÉLULAS */
+div.cell {
+    margin: 20px 0;
+    padding: 0;
+    border: none;
+}
+
+/* CÉLULAS DE CÓDIGO (Input) */
+div.input {
+    /* Oculta o código-fonte para focar apenas nos resultados (dashboards) */
+    display: none !important; 
+}
+
+/* CÉLULAS DE SAÍDA (Output) */
+div.output_wrapper {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Saída de Texto Simples */
+div.output_area pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9em;
+    color: #000;
+}
+
+/* ESTILO DA TABELA (Pandas DataFrames) */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 15px 0;
+    font-size: 0.9em;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #eee;
+    text-align: left;
+}
+
+th {
+    background-color: #667eea; /* Cor de cabeçalho vibrante */
+    color: white;
+    font-weight: bold;
+}
+
+/* TÍTULOS E TEXTO */
+h1, h2, h3 {
+    color: #4a4a4a;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}

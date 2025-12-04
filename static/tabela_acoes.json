@@ -1,0 +1,1382 @@
+[
+  {
+    "modelo": "RF",
+    "acao": "ITUB4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ITUB4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ITUB4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BBDC4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BBDC4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BBDC4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "RF",
+    "acao": "BBAS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BBAS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BBAS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SANB11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SANB11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SANB11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BPAC11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BPAC11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BPAC11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CXSE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CXSE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CXSE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRAP4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRAP4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRAP4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRSR6.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRSR6.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRSR6.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CRFB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CRFB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CRFB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PSSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PSSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PSSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PINE4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PINE4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PINE4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PETR4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PETR4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PETR4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "RF",
+    "acao": "PRIO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PRIO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PRIO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "OIBR4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "OIBR4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "OIBR4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ELET3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ELET3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ELET3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CMIG4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CMIG4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CMIG4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CPFE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CPFE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CPFE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "EGIE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "EGIE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "EGIE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ENGI11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ENGI11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ENGI11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "GEMA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "GEMA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "GEMA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "LIGHT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "LIGHT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "LIGHT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TRPL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TRPL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TRPL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "EQTL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "EQTL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "EQTL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "VALE3.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "VALE3.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "VALE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CSNA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CSNA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CSNA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "USIM5.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "USIM5.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "USIM5.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "GGBR4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "GGBR4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "GGBR4.SA",
+    "presente": 1
+  },
+  {
+    "modelo": "RF",
+    "acao": "MGLU3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "MGLU3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "MGLU3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "LREN3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "LREN3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "LREN3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ABEV3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ABEV3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ABEV3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "RENT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "RENT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "RENT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "MOVI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "MOVI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "MOVI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "VVAR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "VVAR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "VVAR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PCAR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PCAR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PCAR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TRIS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TRIS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TRIS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "WEGE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "WEGE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "WEGE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "JBSS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "JBSS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "JBSS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "MSFT34.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "MSFT34.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "MSFT34.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "HYPE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "HYPE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "HYPE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SLCE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SLCE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SLCE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PETZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PETZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PETZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ARZZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ARZZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ARZZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TFCO4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TFCO4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TFCO4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRML3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRML3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRML3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "RAIL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "RAIL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "RAIL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CCRO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CCRO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CCRO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "LOGB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "LOGB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "LOGB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ARZZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ARZZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ARZZ3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "EMAE4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "EMAE4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "EMAE4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ATUS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ATUS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ATUS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "MRVE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "MRVE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "MRVE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TEND3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TEND3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TEND3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PLPL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PLPL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PLPL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "GFSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "GFSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "GFSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TRAD3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TRAD3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TRAD3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "VLID3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "VLID3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "VLID3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRIV3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRIV3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRIV3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CYRE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CYRE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CYRE3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "EVEN3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "EVEN3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "EVEN3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "HBOR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "HBOR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "HBOR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "VIVT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "VIVT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "VIVT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TIMS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TIMS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TIMS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "OIBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "OIBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "OIBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SUZB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SUZB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SUZB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SBSP3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SBSP3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SBSP3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "KLABIN11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "KLABIN11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "KLABIN11.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "FIBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "FIBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "FIBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TOTS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TOTS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TOTS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRPR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRPR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRPR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "CLSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "CLSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "CLSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "MBLY3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "MBLY3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "MBLY3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRF3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRF3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRF3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SEQL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SEQL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SEQL3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "ASAI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "ASAI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "ASAI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TOTS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TOTS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TOTS3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "NTCO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "NTCO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "NTCO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "BRQT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "BRQT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "BRQT3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "DIRR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "DIRR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "DIRR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "TRPL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "TRPL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "TRPL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "EMBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "EMBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "EMBR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "AZUL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "AZUL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "AZUL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "GOLL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "GOLL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "GOLL4.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "PSSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "PSSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "PSSA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SULB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SULB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SULB3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "SGUP3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "SGUP3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "SGUP3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "B3SA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "B3SA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "B3SA3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "MOVI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "MOVI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "MOVI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "RBRR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "RBRR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "RBRR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "RDOR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "RDOR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "RDOR3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "AGRO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "AGRO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "AGRO3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "AERI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "AERI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "AERI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "RF",
+    "acao": "POSI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MEDIA3M",
+    "acao": "POSI3.SA",
+    "presente": 0
+  },
+  {
+    "modelo": "MARKOWITZ",
+    "acao": "POSI3.SA",
+    "presente": 0
+  }
+]

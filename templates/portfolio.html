@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfólios - Visualização</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        .sector-header { cursor: pointer; background: #f0f0f0; font-weight: bold; }
+        .hidden-row { display: none; }
+        .model-cell { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Portfólios - Visualização Dinâmica</h1>
+        <h2>Seleção de Ações por Modelo</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Setor</th>
+                    <th>Ticker</th>
+                    <th>Nome</th>
+                    {% for modelo in modelos.keys() %}
+                        <th>{{ modelo }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for setor in setores %}
+                    <tr class="sector-header" onclick="toggleSector('{{ setor }}')">
+                        <td colspan="{{ 3 + modelos|length }}">{{ setor }}</td>
+                    </tr>
+                    {% for ticker, info in tickers_info.items() if info['setor'] == setor %}
+                        <tr class="sector-row sector-{{ setor }} hidden-row">
+                            <td>{{ info['setor'] }}</td>
+                            <td>{{ ticker }}</td>
+                            <td>{{ info['nome'] }}</td>
+                            {% for modelo, tickers in modelos.items() %}
+                                <td class="model-cell">
+                                    {% if ticker in tickers %}
+                                        <span style="color: #007BFF;">✔</span>
+                                    {% else %}
+                                        <span style="color: #ccc;">—</span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Métricas dos Portfólios</h2>
+        <div>
+            {{ metricas_html|safe }}
+        </div>
+
+        <h2>Retorno dos Modelos</h2>
+        <div>
+            {{ chart_retorno_html|safe }}
+        </div>
+
+        <h2>Alpha dos Modelos (vs IBOVESPA)</h2>
+        <div>
+            {{ chart_alpha_html|safe }}
+        </div>
+    </div>
+    <script>
+        function toggleSector(setor) {
+            var rows = document.querySelectorAll('.sector-' + setor);
+            rows.forEach(function(row) {
+                row.classList.toggle('hidden-row');
+            });
+        }
+    </script>
+</body>
+</html>

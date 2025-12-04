@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Modelos</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <style>
+        body { background: #fafafa; }
+        .container { max-width: 1200px; margin: auto; }
+        h2 { margin-top: 40px; }
+        table.dataTable tbody td { text-align: center; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Dashboard dos Modelos</h1>
+
+    <h2>Ações Presentes em Cada Modelo</h2>
+    <table id="tabela-acoes" class="display" style="width:100%">
+        <thead>
+            <tr id="cabecalho-tabela">
+                <th>Ação</th>
+                <!-- Colunas dos modelos serão inseridas via JS -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Conteúdo será preenchido via JS -->
+        </tbody>
+    </table>
+
+    <div class="grafico">
+        <iframe src="static/grafico_retorno.html" width="100%" height="500" style="border:none;"></iframe>
+    </div>
+    <div class="grafico">
+        <iframe src="static/grafico_alpha.html" width="100%" height="500" style="border:none;"></iframe>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>
+fetch('static/tabela_acoes.json')
+    .then(response => response.json())
+    .then(data => {
+        // data: [{modelo: "RF", acao: "ITUB4.SA", presente: 1}, ...]
+        // 1. Descobrir todos os modelos únicos
+        const modelos = [...new Set(data.map(item => item.modelo))];
+        // 2. Descobrir todas as ações únicas (ordem do JSON original)
+        const acoes = [];
+        data.forEach(item => {
+            if (!acoes.includes(item.acao)) acoes.push(item.acao);
+        });
+
+        // 3. Montar um dicionário: {acao: {modelo: presente}}
+        const tabela = {};
+        data.forEach(item => {
+            if (!tabela[item.acao]) tabela[item.acao] = {};
+            tabela[item.acao][item.modelo] = item.presente;
+        });
+
+        // 4. Montar cabeçalho
+        let ths = '<th>Ação</th>';
+        modelos.forEach(modelo => {
+            ths += `<th>${modelo}</th>`;
+        });
+        document.getElementById('cabecalho-tabela').innerHTML = ths;
+
+        // 5. Montar corpo da tabela
+        let rows = '';
+        acoes.forEach(acao => {
+            rows += `<tr><td>${acao}</td>`;
+            modelos.forEach(modelo => {
+                const presente = tabela[acao][modelo] === 1;
+                rows += `<td>${presente ? '✅' : ''}</td>`;
+            });
+            rows += '</tr>';
+        });
+        document.querySelector('#tabela-acoes tbody').innerHTML = rows;
+
+        // 6. Inicializar DataTable
+        $('#tabela-acoes').DataTable({
+            pageLength: 25,
+            order: [[0, 'asc']]
+        });
+    });
+</script>
+</body>
+</html>
